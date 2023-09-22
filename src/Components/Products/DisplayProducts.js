@@ -15,7 +15,7 @@ const DisplayProducts = () => {
 
   return (
     <>
-      <div className="products">
+      <div className="productsd">
         <div className="container">
           {ctx.items.map((prod) => (
             <div className="container">

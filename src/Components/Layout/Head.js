@@ -1,10 +1,12 @@
 import React from 'react'
 import './Head.css'
-const Head = () => {
+import CartButton from './CartButton'
+const Head = (props) => {
   return (
  <>
  <div className='container'>
  <h1>head</h1>
+ <CartButton openCart1={props.openCart}></CartButton>
  </div>
  </>
   )

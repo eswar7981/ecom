@@ -7,7 +7,7 @@ const Body = () => {
   return (
     <>
     <div className='body'>
-    <Title></Title>
+    
     <DisplayProducts></DisplayProducts>
 </div>
     </>

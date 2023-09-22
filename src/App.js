@@ -1,34 +1,29 @@
-import Head from "./Components/Layout/Head";
-import Title from "./Components/Layout/Title";
-import logo from "./logo.svg";
-import Body from "./Components/Layout/Body";
-import Portal from "./Components/Portal/Portal";
-import { useState } from "react";
-import CartProvider from "./Components/Store/CartProvider";
-import CartContext from "./Components/Store/CartContext";
+import React from 'react'
+import {Route, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from './Components/Pages/Home'
+import About from './Components/Pages/About'
+import Root from './Components/Navigation/Root'
+import Store from './Components/Pages/Store'
 
-function App() {
-
-
-
-  const [cartOpen,setCartOpen]=useState(false)
-
-  const openCart=()=>{
-    setCartOpen(true)
-  }
-
-  const closeCart=()=>{
-    setCartOpen(false)
-  }
+const router=createBrowserRouter([
+  
+  {
+    path:'/',
+    element:<Root/>,
+    children:[
+      {path:'/',element:<Home/>},
+      {path:'/about',element:<About/>},
+      {path:'/store',element:<Store/>}
+    ]
+  },
  
+])
+
+
+const App = () => {
   return (
-    <CartProvider>
-    <Head openCart={openCart}/>
-    {cartOpen && <Portal closeCart={closeCart} />}
-    <Body></Body>
-    </CartProvider>
-    
-  );
+    <RouterProvider router={router}/>
+  )
 }
 
-export default App;
+export default App

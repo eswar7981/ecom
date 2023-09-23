@@ -37,38 +37,56 @@ const CartProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   const addItemtoCart = (item) => {
-    const itemIspresent =
-      cart.some((prod) => {
-        if (prod.title === item.title) {
-          return true;
-        }
-        return false;
-      
-    })
+    const itemIspresent = cart.some((prod) => {
+      if (prod.title === item.title) {
+        return true;
+      }
+      return false;
+    });
 
     if (itemIspresent) {
-   
+      updateCart(
+        cart.map((prod) => {
+          if (prod.title === item.title) {
+            return {
+              ...prod,
+              quantity: prod.quantity + 1,
+            };
+          }
 
-      updateCart(cart.map((prod) => {
-
-        if (prod.title === item.title) {
-            console.log(prod)
-          return {
-            ...prod,
-            quantity: prod.quantity + 1,
-          };
-        }
-       
-        return prod;
-        
-      }));
+          return prod;
+        })
+      );
     } else {
-        console.log("first time")
-      updateCart([...cart,{...item,quantity:1}]);
+      updateCart([...cart, { ...item, quantity: 1 }]);
     }
   };
 
-  const removeItemfromCart = () => {};
+  const removeItemfromCart = (item) => {
+    const itemIspresent = cart.some((prod) => {
+      if (prod.title === item.title) {
+        return true;
+      }
+      return false;
+    });
+
+    if (itemIspresent && item.quantity>1) {
+      updateCart(
+        cart.map((prod) => {
+          if (prod.title === item.title) {
+            return {
+              ...prod,
+              quantity: prod.quantity - 1,
+            };
+          }
+          return prod
+        })
+      )
+    }
+    else{
+      updateCart(cart.filter((prod) => prod.title !== item.title));
+    }
+  };
 
   const cartContext = {
     items: items,

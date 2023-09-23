@@ -1,9 +1,6 @@
-import HomeBody from "./HomeBody";
-
-function Home() {
-
-
-
+import React from "react";
+import './HomeBody.css'
+const HomeBody = () => {
   const eventTickets = [
     {
       date: "JUL16",
@@ -37,17 +34,30 @@ function Home() {
     },
   ];
 
-  
-
-
-
   return (
-    <>
-      <HomeBody/>  
-  
-      
-    </>
+    <div>
+        <div  className="cont">
+      {eventTickets.map((event) => (
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h1>{event.date}</h1>
+            </div>
+            <div className="col">
+              <h1>{event.Venue}</h1>
+            </div>
+            <div className="col">
+              <h1>{event.path}</h1>
+            </div>
+          </div>
+        </div>
+      ))}
+      </div>
+      <div className="cont2">
+        <h1>GENERICS</h1>
+      </div>
+    </div>
   );
-}
+};
 
-export default Home;
+export default HomeBody;

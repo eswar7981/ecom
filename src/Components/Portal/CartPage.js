@@ -6,6 +6,13 @@ const CartPage = (props) => {
   const ctx=useContext(CartContext)
 
 
+  const removeItem=(e,item)=>{
+    
+    console.log(item)
+    ctx.removeItem(item)
+  }
+
+
   return (
     <div className="modals">
       <h1 >Cart</h1>
@@ -25,7 +32,7 @@ const CartPage = (props) => {
               <h3>{item.price}</h3>
             </div>
             <div className="col">
-              <div className='btn btn-danger'>
+              <div className='btn btn-danger'  onClick={(e)=>{removeItem(e,item)}}>
                 remove
               </div>
               </div>

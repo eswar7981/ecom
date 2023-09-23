@@ -1,0 +1,21 @@
+.cont{
+    margin-top: 100px;
+}
+
+.container{
+    justify-content: center;
+}
+
+.cont2{
+    justify-content: end;
+    margin-top:140px;
+    background-color: rgb(71, 203, 255);
+    padding-bottom: 25px;
+    padding-top: 25px;
+    padding-left: 800px;
+}
+
+.cont2 h1{
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

@@ -1,63 +1,73 @@
-import React from "react";
-import './HomeBody.css'
+import React, { useEffect } from "react";
+import "./HomeBody.css";
+import { useState, createContext } from "react";
 const HomeBody = () => {
-  const eventTickets = [
-    {
-      date: "JUL16",
-      Venue: "DETROIT MIDTE ENERGY MUSIC THEATRE",
-      path: "BUY TICKETS",
-    },
-    {
-      date: "JUL19",
-      Venue: "TORONTO,ON BUDWEISER STAGE",
-      path: "BUY TICKETS",
-    },
-    {
-      date: "JUL 22",
-      Venue: "BRISTOW, VAJIGGY LUBE LIVE",
-      path: "BUY TICKETS",
-    },
-    {
-      date: "JUL 29",
-      Venue: "PHOENIX, AZ AK-CHIN PAVILION",
-      path: "BUY TICKETS",
-    },
-    {
-      date: "AUG 2",
-      Venue: "LAS VEGAS, NVT-MOBILE ARENA",
-      path: "BUY TICKETS",
-    },
-    {
-      date: "AUG 7",
-      Venue: "CONCORD, CA CONCORD PAVILION",
-      path: "BUY TICKETS",
-    },
-  ];
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoding] = useState(false);
+  const [error,setError]=useState(null)
+
+  useEffect(() => {
+    const getMovieData = async () => {
+      setIsLoding(true);
+       setError(null)
+
+      try {
+        const response = await fetch("https://swapi.dev/api/films/");
+
+        if (!response.ok) {
+          setIsLoding(false);
+          throw new Error("something went wrong retrying...");
+        }
+        const data = await response.json();
+        const transformMovies = data.results.map((moviedata) => {
+          return {
+            id: moviedata.episode_id,
+            title: moviedata.title,
+            openingText: moviedata.opening_crawl,
+          };
+        });
+
+        setMovies(transformMovies);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoding(false);
+    } ;getMovieData()
+
+
+  }, []);
 
   return (
     <div>
-        <div  className="cont">
-      {eventTickets.map((event) => (
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <h1>{event.date}</h1>
+      <div className="cont">
+       
+        {movies.length>0 && movies.map((event) => (
+          <li key={event.id}>
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  <h1 style={{fontFamily:"Verdana, Geneva, Tahoma, sans-serif"} }>{event.title}</h1>
+                </div>
+                <div className="col">
+                  <h1 style={{fontFamily:"Verdana, Geneva, Tahoma, sans-serif"}}>{event.openingText}</h1>
+                </div>
+              </div>
             </div>
-            <div className="col">
-              <h1>{event.Venue}</h1>
-            </div>
-            <div className="col">
-              <h1>{event.path}</h1>
-            </div>
-          </div>
+          </li>
+        ))}
+        <div className="load">
+        {isLoading && <div class="loader"></div>}
         </div>
-      ))}
+        {error && <p>{error}</p>}
       </div>
       <div className="cont2">
-        <h1>GENERICS</h1>
+        <h1>GENERICS </h1>
       </div>
     </div>
   );
 };
 
 export default HomeBody;
+
+
+

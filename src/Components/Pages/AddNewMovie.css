@@ -1,0 +1,31 @@
+.container1{
+
+    padding:100px 100px;
+    justify-content: center;
+    margin:100px 100px;
+    border:solid;
+    border-radius: 5px;
+    border-color: rgb(157, 164, 167);
+}
+
+
+.col input{
+
+    width: 800px;
+    border:solid;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(46, 47, 48);
+    
+}
+
+
+.title{
+    margin:50px 300px;
+    font-family:cursive;
+    font-size: larger;
+}
+
+.col h1{
+    font-size:large;
+}

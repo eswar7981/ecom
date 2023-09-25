@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./HomeBody.css";
 import { useState, createContext } from "react";
+import AddNewMovie from "./AddNewMovie";
 const HomeBody = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoding] = useState(false);
@@ -40,7 +41,7 @@ const HomeBody = () => {
   return (
     <div>
       <div className="cont">
-       
+       <AddNewMovie></AddNewMovie>
         {movies.length>0 && movies.map((event) => (
           <li key={event.id}>
             <div className="container">
@@ -56,7 +57,7 @@ const HomeBody = () => {
           </li>
         ))}
         <div className="load">
-        {isLoading && <div class="loader"></div>}
+        {isLoading && <div><div class="loader"></div><h1>fetching movies</h1></div>}
         </div>
         {error && <p>{error}</p>}
       </div>

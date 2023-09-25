@@ -16,16 +16,26 @@
     border-radius: 20px;
     border-width: 2px;
     border-color: rgb(46, 47, 48);
+    margin-bottom: 50px;
     
 }
 
 
 .title{
-    margin:50px 300px;
+    margin:50px 330px;
     font-family:cursive;
-    font-size: larger;
+    font-size:20px;
+    font-weight: bold;
 }
 
 .col h1{
-    font-size:large;
+    color:rgb(6, 6, 6);
+}
+
+
+.button button{
+    border-color: aqua;
+    background-color: aqua;
+    border-radius: 5px;
+    margin:0px 380px;
 }

@@ -13,22 +13,27 @@ const HomeBody = () => {
        setError(null)
 
       try {
-        const response = await fetch("https://swapi.dev/api/films/");
+        const response = await fetch("https://movies-ae6a0-default-rtdb.firebaseio.com/movies.json");
 
         if (!response.ok) {
           setIsLoding(false);
           throw new Error("something went wrong retrying...");
         }
         const data = await response.json();
-        const transformMovies = data.results.map((moviedata) => {
-          return {
-            id: moviedata.episode_id,
-            title: moviedata.title,
-            openingText: moviedata.opening_crawl,
-          };
-        });
 
-        setMovies(transformMovies);
+        const loadedMovies=[];
+
+
+        for(const key in data){
+          loadedMovies.push({
+            id:key,
+            title:data[key].title,
+            openingText:data[key].openingText,
+            releaseDate:data[key].releaseDate,
+          })
+        }
+
+        setMovies(loadedMovies);
       } catch (error) {
         setError(error.message);
       }
@@ -37,6 +42,16 @@ const HomeBody = () => {
 
 
   }, []);
+
+
+   async function deleteMovieHandler(e,id){
+    e.preventDefault()
+    const response1=await fetch('https://movies-ae6a0-default-rtdb.firebaseio.com/movies.json',{
+   method:'Delete',
+   id:id
+    })
+
+  }
 
   return (
     <div>
@@ -51,6 +66,12 @@ const HomeBody = () => {
                 </div>
                 <div className="col">
                   <h1 style={{fontFamily:"Verdana, Geneva, Tahoma, sans-serif"}}>{event.openingText}</h1>
+                </div>
+                <div className="col">
+                  <h1 style={{fontFamily:"Verdana, Geneva, Tahoma, sans-serif"}}>{event.releaseDate}</h1>
+                </div>
+                <div className="col">
+                  <button onClick={(e)=>(deleteMovieHandler(e,event.id))}>Delete</button>
                 </div>
               </div>
             </div>

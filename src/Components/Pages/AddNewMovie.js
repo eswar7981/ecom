@@ -2,7 +2,7 @@ import React from "react";
 import './AddNewMovie.css';
 import {useState} from "react"
 const AddNewMovie = () => {
-    const [newMovie,setNewMovie]=useState({title:'',openingtext:'',releasedate:''})
+    const [newMovie,setNewMovie]=useState({title:'',openingText:'',releaseDate:'',id:null})
     
     
     const addtitleHandler=(e)=>{
@@ -18,7 +18,7 @@ const AddNewMovie = () => {
     const addOpeningText=(e)=>{
         setNewMovie((prev)=>{
             return{
-                ...prev,['openingtext']:e.target.value
+                ...prev,['openingText']:e.target.value
             }
         })
     }
@@ -27,14 +27,33 @@ const AddNewMovie = () => {
     const addReleaseDate=(e)=>{
         setNewMovie((prev)=>{
             return{
-                ...prev,['releasedate']:e.target.value
+                ...prev,['releaseDate']:e.target.value
             }
         })
+
+        setNewMovie((prev)=>{
+            return{
+                ...prev,['id']:Math.random()
+            }
+        })
+        
     }
 
-    const submitMovieDetails=(e)=>{
+    async function submitMovieDetails(e){
         e.preventDefault()
-        console.log(newMovie)
+       
+        
+        const response=await fetch('https://movies-ae6a0-default-rtdb.firebaseio.com/movies.json',{
+            method:'POST',
+            body:JSON.stringify(newMovie),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        setNewMovie({title:'',openingText:'',releaseDate:'',id:null})
+        const data=await response.json()
+        console.log(data)
+
     }
 
   
@@ -59,14 +78,16 @@ const AddNewMovie = () => {
         </div>
         <div className="row">
           <div className="col">
-            <input value={newMovie.openingtext}  onChange={addOpeningText} type="text"></input>
+            <input value={newMovie.openingText}  onChange={addOpeningText} type="text"></input>
 
             <h1>Release Date</h1>
 
-            <input value={newMovie.releasedate} onChange={addReleaseDate} type="date"></input>
+            <input value={newMovie.releaseDate} onChange={addReleaseDate} type="date"></input>
           </div>
-        </div>
+        </div >
+        <div className="button">
         <button>Add Movie</button>
+        </div>
       </div>
       </form>
     </>

@@ -60,7 +60,7 @@ const AddNewMovie = () => {
     return (
     <>
    <form onSubmit={submitMovieDetails} >
-      <div className="container1">
+      <div className="contaigner1">
       <div className="title">
         Add a Movie
     </div>

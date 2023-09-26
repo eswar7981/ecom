@@ -16,12 +16,12 @@
 
 
 .cont{
-    margin-left: 250px;
+    margin-left: 350px;
     margin-right: 400px;
     border:solid;
     border-color: black;
     border-radius: 10px;
-    background-color: rgb(201, 194, 194);
+    background-color: #8ca5cc;
 }
 
 .col1 input{
@@ -54,12 +54,12 @@
 }
 
 .col4{
-    margin-left: 470px;
+    margin-left: 200px;
 }
 
 .col4 button{
-    background-color: rgb(152, 179, 202);
+    background-color: rgb(68, 123, 174);
     border:solid;
-    border-color: rgb(87, 92, 96);
+    border-color: rgb(0, 0, 0);
     border-radius: 3px;
 }

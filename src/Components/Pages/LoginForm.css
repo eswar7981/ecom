@@ -1,0 +1,47 @@
+.sign h1{
+    font-size:xx-large;
+    margin-left: 450px;
+    margin-top: 20px;
+    padding-bottom: -90px;
+}
+
+.but{
+    margin-left: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius:10px;
+
+}
+
+.but button{
+    border:solid;
+    border-color: black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.send{
+    margin-left: 100px;
+}
+
+.loadbutton{
+    margin-left: 250px;
+}
+
+
+.load{
+    border:5px solid black;
+    border-top:5px solid rgb(110, 105, 105);
+    border-radius:50%;
+    width:40px;
+    height: 40px;
+    animation: load 2s linear infinite;
+}
+
+
+
+@keyframes load{
+    0% {transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+
+}

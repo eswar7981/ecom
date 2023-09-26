@@ -8,11 +8,42 @@
 .btn{
     background-color: black;
     color: white;
+    border:solid;
+    
+    border-color:black ;
+}
+
+
+
+
+.head1 :hover{
+    
+    color:white;
+    font-weight: bold;
+    background-color:  #587ec0;
+}
+
+
+.head1 :active{
+    color: black;
+    background-color: #587ec0;
 }
 
 .headin{
+    border:solid;
+    border-color: #6a7a95;
     font-size:50px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
     text-align: center;
-    background-color: rgb(153, 150, 150);
+    background-color:#8ca5cc;
+}
+
+
+.btn :active{
+    color: red;
+}
+
+.btn :hover{
+    color: red;
 }

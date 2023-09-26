@@ -27,6 +27,11 @@ const MainNavigation = () => {
                 <div className="btn">Store</div>
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/contactus">
+                <div className="btn">Contact Us</div>
+              </NavLink>
+            </li>
           </div>
         </ul>
       </nav>

@@ -1,0 +1,65 @@
+.col1{
+    display: flex;
+    gap:156px;
+    margin :10px;
+}
+.col2{
+    display: flex;
+    gap:128px;
+    margin :10px
+}
+.col3{
+    display: flex;
+    gap:40px;
+    margin :10px
+}
+
+
+.cont{
+    margin-left: 250px;
+    margin-right: 400px;
+    border:solid;
+    border-color: black;
+    border-radius: 10px;
+    background-color: rgb(201, 194, 194);
+}
+
+.col1 input{
+    border:solid;
+    border-radius: 5px;
+    border-width: 2px;
+    height: 37px;
+}
+
+.col2 input{
+    border:solid;
+    border-radius: 5px;
+    border-width: 2px;
+    height: 37px;
+}
+
+.col3 input{
+    border:solid;
+    border-radius: 5px;
+    border-width: 2px;
+    height: 37px;
+}
+
+
+.title h1{
+ 
+    font-size:25px;
+    margin-left: 130px;
+
+}
+
+.col4{
+    margin-left: 470px;
+}
+
+.col4 button{
+    background-color: rgb(152, 179, 202);
+    border:solid;
+    border-color: rgb(87, 92, 96);
+    border-radius: 3px;
+}

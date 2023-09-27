@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './ContactUs.css'
 const ContactUs = () => {
     const [details,setDetails]=useState({name:'',emailID:'',phoneNumber:''})
-
-    async function submitHandler(e){
+     
+      async function submitHandler(e){
+        try{
       e.preventDefault()
       const response= await fetch('https://movies-ae6a0-default-rtdb.firebaseio.com/ContactFormDetails.json',{
         method:'POST',
@@ -15,7 +16,10 @@ const ContactUs = () => {
       const data=await response.json()
       console.log(data)
 
-      setDetails({name:'',emailID:'',phoneNumber:''})
+      setDetails({name:'',emailID:'',phoneNumber:''})}
+      catch(err){
+  console.log(err)
+      }
     }
 
 

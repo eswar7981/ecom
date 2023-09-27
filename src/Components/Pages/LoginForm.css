@@ -45,3 +45,15 @@
     100%{transform: rotate(360deg);}
 
 }
+.login{
+    margin-left:400px;
+   
+}
+
+.login button{
+    border: solid;
+    background-color:white;
+    border-color: white;
+    font-weight: bolder;
+    font-size: larger;
+}

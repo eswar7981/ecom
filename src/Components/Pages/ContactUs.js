@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './ContactUs.css'
+import CartContext from '../Store/CartContext'
 const ContactUs = () => {
     const [details,setDetails]=useState({name:'',emailID:'',phoneNumber:''})
      
+
+    const ctx=useContext(CartContext)
       async function submitHandler(e){
         try{
       e.preventDefault()

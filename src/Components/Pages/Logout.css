@@ -1,0 +1,41 @@
+.logcont{
+    margin-left: 350px;
+    margin-right: 380px;
+    border:solid;
+    border-color: hsl(0, 0%, 0%)00;
+    border-radius: 20px;
+    background-color: #91a1bc;
+    margin-top: 40px;
+   padding-top: 50px;
+   padding-bottom: 50px;
+}
+
+.ro{
+    display: block;
+}
+
+.cols{
+    margin-left: 140px;
+}
+
+.cols h3{
+color:rgb(2, 2, 2);
+
+
+}
+
+
+.colbut {
+    margin-top: 40px;
+    margin-left: 190px;
+   
+   
+}
+
+.colbut button{
+    font-weight: bold;
+    border:solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color:white;
+}

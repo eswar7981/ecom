@@ -5,10 +5,10 @@ const DisplayProducts = () => {
   
 
   const ctx=useContext(CartContext)
-   
 
+ 
   const addItemHandler=(e,prod)=>{
-
+    ctx.LoggedIn()
     ctx.addItem(prod)
   }
 

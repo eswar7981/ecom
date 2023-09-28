@@ -30,6 +30,7 @@
 }
 
 .headin{
+    color: black;
     border:solid;
     border-color: #6a7a95;
     font-size:50px;
@@ -39,6 +40,10 @@
     background-color:#8ca5cc;
 }
 
+.quot h1{
+    font-size:small;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
 
 .btn :active{
     color: red;

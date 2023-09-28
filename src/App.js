@@ -9,17 +9,30 @@ import MainNavigation from './Components/Navigation/MainNavigation'
 import ProductDescription from './Components/Layout/ProductDescription'
 import Body from './Components/Layout/Body'
 import Login from './Components/Pages/Login'
+import PasswordChange from './Components/Pages/PasswordChange'
+import Logout from './Components/Pages/Logout'
+import Profile from './Components/Pages/Profile'
 
 const App = () => {
   return (
     <>
     <header>
       <MainNavigation/>
+    
     </header>
     <main>
       <Switch>
-        <Route path="/login">
+      <Route path="/profile" >
+          <Profile/>
+        </Route>
+        <Route path="/login" >
           <Login/>
+        </Route>
+        <Route path="/logout" >
+          <Logout/>
+        </Route>
+        <Route path="/PasswordPage" exact>
+          <PasswordChange/>
         </Route>
       <Route path="/home">
         <Home/>

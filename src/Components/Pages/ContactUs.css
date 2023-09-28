@@ -17,13 +17,13 @@
 
 .cont{
     margin-left: 350px;
-    margin-right: 400px;
+    margin-right: 380px;
     border:solid;
     border-color: black;
     border-radius: 10px;
     background-color: #8ca5cc;
+    margin-top: 40px;
 }
-
 .col1 input{
     border:solid;
     border-radius: 5px;
@@ -45,11 +45,23 @@
     height: 37px;
 }
 
+.col1 h3{
+    color: black;
+}
+.col2 h3{
+    color: black;
+}
+.col3 h3{
+    color: black;
+}
+
 
 .title h1{
- 
+    color: black;
     font-size:25px;
-    margin-left: 130px;
+    margin-left: 200px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
 
 }
 
@@ -58,8 +70,9 @@
 }
 
 .col4 button{
-    background-color: rgb(68, 123, 174);
+    font-weight: bold;
     border:solid;
-    border-color: rgb(0, 0, 0);
-    border-radius: 3px;
+    border-radius: 10px;
+    border-color: black;
+    background-color:white;
 }

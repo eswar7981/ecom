@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Prompt } from "react-router-dom";
 import "./LoginForm.css";
+import { Link } from "react-router-dom";
 import { Alert } from "bootstrap";
+import CartContext from "../Store/CartContext";
 const LoginForm = () => {
   const [details, setDetails] = useState({ emailID: "", password: "" });
   const [dataEntering, setDataEntering] = useState(false);
@@ -9,6 +11,8 @@ const LoginForm = () => {
   const [gotError, setGotError] = useState(false);
   const [login, setLogin] = useState(true);
   const [signIn, setSignIn] = useState(false);
+  const [wrongPass, setWrongPass] = useState(false);
+  const cntx = useContext(CartContext);
 
   const emailIDHandler = (e) => {
     setDetails((prev) => {
@@ -18,7 +22,6 @@ const LoginForm = () => {
       };
     });
   };
-
   const passwordHandler = (e) => {
     setDetails((prev) => {
       return {
@@ -28,38 +31,35 @@ const LoginForm = () => {
     });
   };
 
-  async function submitHandler(e) {
+  const submitHandler = (e) => {
     setSendingRequest(true);
     setGotError(false);
     e.preventDefault();
-
     if (signIn) {
-      console.log("sign In");
-      try {
-        const response = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUGPZ0RRfEcTF7-bGKKmigA28gvo_7HE4",
+      e.preventDefault();
 
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: details.emailID,
-              password: details.password,
-              returnSecureToken: true,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUGPZ0RRfEcTF7-bGKKmigA28gvo_7HE4",
 
-        const data=response.json()
-        console.log(data)
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: details.emailID,
+            password: details.password,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((res) => {
+        if (res.ok) {
+          //...
+        } else {
+          res.json().then((data) => console.log(data));
+        }
+      });
 
-
-      } catch (err) {
-        console.log(err);
-        alert(err);
-      }
       e.preventDefault();
 
       setDetails({ emailID: "", password: "" });
@@ -67,35 +67,54 @@ const LoginForm = () => {
     }
 
     if (login) {
-      console.log("Sign Up");
-      try {
-        const response = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAUGPZ0RRfEcTF7-bGKKmigA28gvo_7HE4",
-
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: details.emailID,
-              password: details.password,
-              returnSecureToken: true,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data=response.json()
-        console.log(data)
-      } catch (err) {
-        console.log(err);
-        alert(err);
-      }
+      setWrongPass(false);
       e.preventDefault();
+      console.log("log in");
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAUGPZ0RRfEcTF7-bGKKmigA28gvo_7HE4",
+
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: details.emailID,
+            password: details.password,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            return res.json().then((data) => {
+              let errorMessage = "problem";
+              alert(errorMessage);
+              setWrongPass(true);
+            });
+          }
+        })
+        .then((data) => {
+          console.log(data);
+
+          localStorage.setItem('loggedin',data.idToken)
+        
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
 
       setDetails({ emailID: "", password: "" });
       setSendingRequest(false);
+     
     }
-  }
+  };
+
+  const passwordChangeHandler = (e) => {
+    e.preventDefault();
+  };
 
   const dataHandler = () => {
     setDataEntering(false);
@@ -125,6 +144,7 @@ const LoginForm = () => {
         {login && <h1>Login</h1>}
         {signIn && <h1>Sign Up</h1>}
       </div>
+
       <div className="login">
         {login && (
           <button onClick={SignInHandler}>
@@ -137,6 +157,28 @@ const LoginForm = () => {
           </button>
         )}
       </div>
+      {wrongPass && (
+        <div className="password">
+          <button onClick={passwordChangeHandler}> <ul>
+            <li>
+              <Link to="/PasswordPage">
+                <h1>Forgot Password !!!</h1>
+              </Link>
+            </li>
+          </ul></button>
+        </div>
+      )}
+      {!wrongPass && (
+        <div className="password1">
+          <ul>
+            <li>
+              <Link to="/PasswordPage">
+                <h1>Forgot Password</h1>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
       <Prompt
         when={dataEntering}
         message={(location) => "entered data will be lost"}
@@ -162,11 +204,12 @@ const LoginForm = () => {
                 required
               ></input>
             </div>
+
             <div className="but">
               {!sendingRequest && signIn && (
                 <button onClick={dataHandler}>Create Account</button>
               )}
-                {!sendingRequest && login && (
+              {!sendingRequest && login && (
                 <button onClick={dataHandler}>Login</button>
               )}
             </div>

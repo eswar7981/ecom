@@ -98,9 +98,8 @@ const LoginForm = () => {
         })
         .then((data) => {
           console.log(data);
-
           localStorage.setItem('loggedin',data.idToken)
-        
+          cntx.LoggedIn()
         })
         .catch((err) => {
           alert(err.message);

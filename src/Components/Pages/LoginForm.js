@@ -34,7 +34,6 @@ const LoginForm = () => {
   const submitHandler = (e) => {
     setSendingRequest(true);
     setGotError(false);
-    e.preventDefault();
     if (signIn) {
       e.preventDefault();
 
@@ -69,7 +68,7 @@ const LoginForm = () => {
     if (login) {
       setWrongPass(false);
       e.preventDefault();
-      console.log("log in");
+      console.log("I am in login page")
       fetch(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAUGPZ0RRfEcTF7-bGKKmigA28gvo_7HE4",
 
@@ -97,12 +96,10 @@ const LoginForm = () => {
           }
         })
         .then((data) => {
-          console.log(data);
-          localStorage.setItem('loggedin',data.idToken)
-          setTimeout(() => {
-            localStorage.removeItem('loggedin')
-        
-          },5000);
+          console.log(cntx.alreadylogin)
+
+          cntx.login(data.idToken)  
+          console.log(cntx.alreadylogin)
         })
         .catch((err) => {
           alert(err.message);
@@ -110,7 +107,7 @@ const LoginForm = () => {
 
       setDetails({ emailID: "", password: "" });
       setSendingRequest(false);
-      history.replace('/home')
+   
     }
   };
 

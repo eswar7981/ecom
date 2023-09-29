@@ -7,7 +7,9 @@ const CartContext =
     totalAmount: 0,
     addItem: (item) => {},
     removeItem: (id) => {},
-    LoggedIn:()=>{}
+    login:(token)=>{},
+    alreadylogin:null,
+    justLoggedOut:()=>{}
   });
 
 export default CartContext;

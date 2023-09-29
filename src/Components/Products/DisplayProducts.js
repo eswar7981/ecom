@@ -8,7 +8,6 @@ const DisplayProducts = () => {
 
  
   const addItemHandler=(e,prod)=>{
-    ctx.LoggedIn()
     ctx.addItem(prod)
   }
 

@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Logout.css'
 import { useHistory } from "react-router-dom";
+import CartContext from "../Store/CartContext";
 const Logout = () => {
-  
     const history=useHistory()
-
-
+    const cntx=useContext(CartContext)
     const submitHandler=()=>{
-        localStorage.removeItem('loggedin')
+      cntx.justLoggedOut()
         history.replace('/login')
     }
 

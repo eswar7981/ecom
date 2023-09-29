@@ -21,11 +21,11 @@ const Store = () => {
    
   return (
     <div>
-        <CartProvider>
+      
     <Head openCart={openCart}/>
     <Body/>
     {cartOpen && <Portal closeCart={closeCart}/>}
-   </CartProvider>
+  
     </div>
   )
 }

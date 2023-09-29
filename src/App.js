@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Redirect, Route, RouterProvider, Switch, createBrowserRouter } from 'react-router-dom'
 import Home from './Components/Pages/Home'
 import About from './Components/Pages/About'
@@ -12,10 +12,10 @@ import Login from './Components/Pages/Login'
 import PasswordChange from './Components/Pages/PasswordChange'
 import Logout from './Components/Pages/Logout'
 import Profile from './Components/Pages/Profile'
+import CartContext from './Components/Store/CartContext'
 
 const App = () => {
-
-
+  const ctx=useContext(CartContext)
 
   return (
     <>
@@ -25,6 +25,7 @@ const App = () => {
     </header>
     <main>
       <Switch>
+        <>
         <div>
       <Route path="/profile" >
           <Profile/>
@@ -38,6 +39,8 @@ const App = () => {
         <Route path="/PasswordPage" exact>
           <PasswordChange/>
         </Route>
+
+       {ctx.alreadylogin && <div>
       <Route path="/home">
         <Home/>
       </Route>
@@ -57,10 +60,13 @@ const App = () => {
         <Redirect to="/login"></Redirect>
       </Route>
       </div>
+}
+      </div>
      
       <Route path="/products/:productid">
         <ProductDescription></ProductDescription>
       </Route>
+      </>
       </Switch>
     </main>
     </>

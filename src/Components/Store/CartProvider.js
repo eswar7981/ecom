@@ -37,13 +37,8 @@ const CartProvider = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [login,setLogin]=useState(false)
   
-  
-  const loggedIn=()=>{
-    console.log("hlello")
-    if(localStorage.getItem('loggedin')){
-      setLogin(true)
-    }
-  }
+
+ 
 
 
   
@@ -99,7 +94,15 @@ const CartProvider = (props) => {
     }
   };
 
-  
+  const loggedIn=(token)=>{
+    localStorage.setItem('loggedin',token)
+    setLogin(true)
+   }
+
+  const loggedOut=()=>{
+    localStorage.removeItem('loggedin')
+    setLogin(false)
+  }
 
   const cartContext = {
     items: items,
@@ -107,8 +110,9 @@ const CartProvider = (props) => {
     totalAmount: totalAmount,
     addItem: addItemtoCart,
     removeItem: removeItemfromCart,
-    login:login,
-    LoggedIn:loggedIn,
+    login:loggedIn,
+    alreadylogin:login,
+    justLoggedOut:loggedOut
   };
 
   return (

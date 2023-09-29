@@ -14,6 +14,9 @@ import Logout from './Components/Pages/Logout'
 import Profile from './Components/Pages/Profile'
 
 const App = () => {
+
+
+
   return (
     <>
     <header>
@@ -22,7 +25,6 @@ const App = () => {
     </header>
     <main>
       <Switch>
-        {localStorage.getItem('loggedin') &&
         <div>
       <Route path="/profile" >
           <Profile/>
@@ -54,10 +56,8 @@ const App = () => {
       <Route path="/*" exact>
         <Redirect to="/login"></Redirect>
       </Route>
-      </div>}
-      <Route path="/login" >
-          <Login/>
-        </Route>
+      </div>
+     
       <Route path="/products/:productid">
         <ProductDescription></ProductDescription>
       </Route>

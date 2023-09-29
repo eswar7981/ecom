@@ -1,9 +1,14 @@
 import React from "react";
 import './Logout.css'
+import { useHistory } from "react-router-dom";
 const Logout = () => {
+  
+    const history=useHistory()
+
 
     const submitHandler=()=>{
         localStorage.removeItem('loggedin')
+        history.replace('/login')
     }
 
   return (

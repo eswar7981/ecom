@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react'
 import './ContactUs.css'
 import CartContext from '../Store/CartContext'
+import { useHistory } from 'react-router-dom'
 const ContactUs = () => {
     const [details,setDetails]=useState({name:'',emailID:'',phoneNumber:''})
-     
+    const history=useHistory()
+
 
     const ctx=useContext(CartContext)
       async function submitHandler(e){
@@ -22,6 +24,7 @@ const ContactUs = () => {
       setDetails({name:'',emailID:'',phoneNumber:''})}
       catch(err){
   console.log(err)
+  history.replace('/store')
       }
     }
 

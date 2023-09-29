@@ -4,8 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import "./MainNavigation.css";
 import CartButton from "../Layout/CartButton";
 import CartContext from "../Store/CartContext";
-
+import { useEffect } from "react";
 const MainNavigation = () => {
+  
+
   return (
     <header>
       <nav>

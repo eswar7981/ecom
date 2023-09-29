@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Prompt } from "react-router-dom";
+import { Prompt, Redirect, useHistory } from "react-router-dom";
 import "./LoginForm.css";
 import { Link } from "react-router-dom";
 import { Alert } from "bootstrap";
@@ -13,7 +13,7 @@ const LoginForm = () => {
   const [signIn, setSignIn] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
   const cntx = useContext(CartContext);
-
+  const history=useHistory()
   const emailIDHandler = (e) => {
     setDetails((prev) => {
       return {
@@ -99,7 +99,10 @@ const LoginForm = () => {
         .then((data) => {
           console.log(data);
           localStorage.setItem('loggedin',data.idToken)
-          cntx.LoggedIn()
+          setTimeout(() => {
+            localStorage.removeItem('loggedin')
+        
+          },5000);
         })
         .catch((err) => {
           alert(err.message);
@@ -107,7 +110,7 @@ const LoginForm = () => {
 
       setDetails({ emailID: "", password: "" });
       setSendingRequest(false);
-     
+      history.replace('/home')
     }
   };
 

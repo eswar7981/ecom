@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, RouterProvider, Switch, createBrowserRouter } from 'react-router-dom'
+import {Redirect, Route, RouterProvider, Switch, createBrowserRouter } from 'react-router-dom'
 import Home from './Components/Pages/Home'
 import About from './Components/Pages/About'
 
@@ -22,6 +22,8 @@ const App = () => {
     </header>
     <main>
       <Switch>
+        {localStorage.getItem('loggedin') &&
+        <div>
       <Route path="/profile" >
           <Profile/>
         </Route>
@@ -49,6 +51,13 @@ const App = () => {
       <Route path="/store/products" exact>
         <Body></Body>
       </Route>
+      <Route path="/*" exact>
+        <Redirect to="/login"></Redirect>
+      </Route>
+      </div>}
+      <Route path="/login" >
+          <Login/>
+        </Route>
       <Route path="/products/:productid">
         <ProductDescription></ProductDescription>
       </Route>

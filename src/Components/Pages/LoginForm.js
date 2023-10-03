@@ -34,6 +34,7 @@ const LoginForm = () => {
   const submitHandler = (e) => {
     setSendingRequest(true);
     setGotError(false);
+    cntx.setemail(details.emailID)
     if (signIn) {
       e.preventDefault();
 
@@ -59,7 +60,7 @@ const LoginForm = () => {
         }
       });
 
-      e.preventDefault();
+   
 
       setDetails({ emailID: "", password: "" });
       setSendingRequest(false);
@@ -107,7 +108,7 @@ const LoginForm = () => {
 
       setDetails({ emailID: "", password: "" });
       setSendingRequest(false);
-   
+      history.replace('/store')
     }
   };
 

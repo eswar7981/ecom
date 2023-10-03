@@ -9,7 +9,7 @@ const Portal = (props) => {
  
   return (<>
   <div className="modals">
-    {ReactDOM.createPortal(<CartPage closeCart={props.closeCart}/>, rend)}
+    {ReactDOM.createPortal(<CartPage />, rend)}
     </div>
     </>);
 };

@@ -9,7 +9,13 @@ const CartContext =
     removeItem: (id) => {},
     login:(token)=>{},
     alreadylogin:null,
-    justLoggedOut:()=>{}
+    justLoggedOut:()=>{},
+    cartOpen:()=>{},
+    cartClose:()=>{},
+    cart:null,
+    addTotal1:(price)=>{},
+    emailHandler:(email)=>{},
+    email:null,
   });
 
 export default CartContext;

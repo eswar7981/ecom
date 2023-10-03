@@ -1,11 +1,13 @@
 import HomeBody from "./HomeBody";
+import HomeInfo from "./HomeInfo";
 
 function Home() {
 
   return (
     <>
-      <HomeBody/>  
-  
+    
+    
+  <HomeInfo></HomeInfo>
       
     </>
   );

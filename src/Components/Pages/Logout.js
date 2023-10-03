@@ -5,8 +5,10 @@ import CartContext from "../Store/CartContext";
 const Logout = () => {
     const history=useHistory()
     const cntx=useContext(CartContext)
-    const submitHandler=()=>{
-      cntx.justLoggedOut()
+    async function submitHandler(e){
+      e.preventDefault()
+    
+        cntx.justLoggedOut()
         history.replace('/login')
     }
 

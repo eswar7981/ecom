@@ -18,3 +18,28 @@
     height: 400px;
     overflow-y:scroll;
   }
+
+  .btns button:active{
+    background-color:red;
+    border-color: red;
+    color: white;
+  }
+
+  .total{
+    display: flex;
+    gap:20px;
+    margin-left: 400px;
+    background-color: rgb(31, 235, 31);
+    color: black;
+    padding-left: 15px;
+    border:solid;
+    border-color: black;
+    border-width: 0.4px;
+  }
+  .total h1{
+    font-size: x-large;
+  }
+
+  .btns button{
+    background-color: rgb(254, 41, 41);
+  }

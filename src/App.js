@@ -3,7 +3,7 @@ import {Redirect, Route, RouterProvider, Switch, createBrowserRouter } from 'rea
 import Home from './Components/Pages/Home'
 import About from './Components/Pages/About'
 
-import Store from './Components/Pages/Store'
+import Store from './Components/Layout/Store'
 import ContactUs from './Components/Pages/ContactUs'
 import MainNavigation from './Components/Navigation/MainNavigation'
 import ProductDescription from './Components/Layout/ProductDescription'
@@ -13,6 +13,9 @@ import PasswordChange from './Components/Pages/PasswordChange'
 import Logout from './Components/Pages/Logout'
 import Profile from './Components/Pages/Profile'
 import CartContext from './Components/Store/CartContext'
+import Portal from './Components/Portal/Portal'
+import Head from './Components/Layout/Head'
+import CartButton from './Components/Layout/CartButton'
 
 const App = () => {
   const ctx=useContext(CartContext)
@@ -38,6 +41,9 @@ const App = () => {
         </Route>
         <Route path="/PasswordPage" exact>
           <PasswordChange/>
+        </Route>
+        <Route path="/cart">
+          <CartButton/>
         </Route>
 
        {ctx.alreadylogin && <div>

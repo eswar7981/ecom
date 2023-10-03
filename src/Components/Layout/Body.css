@@ -1,0 +1,46 @@
+.lis li{
+    list-style: none;
+}
+
+
+.lis{
+    border:solid;
+    margin-left: 280px;
+    margin-top: 30px;
+    margin-right: 400px;
+    padding: 20px 20px;
+}
+
+.lis link{
+   
+}
+
+.link{
+    margin-left:10px;
+    font-size: larger;
+}
+
+
+
+
+
+.body h1{
+    font-size: xx-large;
+}
+
+
+
+
+.details{
+    display: flex;
+   
+}
+
+.addcart{
+    margin-left: 350px;
+}
+
+
+.rating{
+    margin-top: 10px;
+}

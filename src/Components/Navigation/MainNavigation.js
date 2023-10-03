@@ -5,8 +5,19 @@ import "./MainNavigation.css";
 import CartButton from "../Layout/CartButton";
 import CartContext from "../Store/CartContext";
 import { useEffect } from "react";
+import Portal from "../Portal/Portal";
 const MainNavigation = () => {
   const cntx = useContext(CartContext);
+  const noOfItemsInCart = cntx.cartItems.reduce((total,item) => total + item.quantity, 0);
+  
+  const itemsShowHandler=(e)=>{
+    e.preventDefault()
+    console.log("hii")
+    cntx.cartOpen()
+  }
+  
+  
+  
   return (
     <header>
       <nav>
@@ -28,31 +39,27 @@ const MainNavigation = () => {
                   </li>
 
                   <li className="head1">
-                   
-                      <NavLink to="/store">
-                        <div className="btn">Store</div>
-                      </NavLink>
-                    </li>
+                    <NavLink to="/store">
+                      <div className="btn">Store</div>
+                    </NavLink>
+                  </li>
 
                   <li className="head1">
                     <NavLink to="/contactus">
                       <div className="btn">Contact Us</div>
                     </NavLink>
                   </li>
-                  <li className="head1">
-                    <NavLink to="/profile">
-                      <div className="btn">Profile</div>
-                    </NavLink>
-                  </li>
+                  
                 </div>
               </div>
             )}
-            {!cntx.alreadylogin && 
-             <li className="head1">
-             <NavLink to="/login">
-               <div className="btn">Store</div>
-             </NavLink>
-           </li>}
+            {!cntx.alreadylogin && (
+              <li className="head1">
+                <NavLink to="/login">
+                  <div className="btn">Store</div>
+                </NavLink>
+              </li>
+            )}
 
             <li className="head1">
               {cntx.alreadylogin ? (
@@ -65,6 +72,24 @@ const MainNavigation = () => {
                 </NavLink>
               )}
             </li>
+            <div className="cart">
+              {cntx.alreadylogin && (
+                <div className="head1">
+                  <li >
+                    <NavLink to="/cart" >
+                      <div className="btn" onClick={itemsShowHandler}>
+                        <div className="container">
+                          <div className="row">
+                            <div className="col">Cart</div>
+                            <div className="col">{noOfItemsInCart}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </NavLink>
+                  </li>
+                </div>
+              )}
+            </div>
           </div>
         </ul>
       </nav>

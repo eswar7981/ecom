@@ -56,20 +56,25 @@
     margin-left: 490px;
 }
 
+.password{
+    list-style: none;
 
+}
 
-.password button{
-    color: red;
+.password {
+    list-style: none;
+    color: rgb(221, 203, 203);
     border:solid;
     border-color: white;
     background-color: white;
-    font-size: large;
+    font-size:small,
 }
 
 .password1 li{
     list-style-type:none;
   margin-left: 490px;
     color: black;
+    font-size: large;
     
 }
 .password1 h1{

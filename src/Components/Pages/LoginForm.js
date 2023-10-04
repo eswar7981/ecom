@@ -157,28 +157,7 @@ const LoginForm = () => {
           </button>
         )}
       </div>
-      {wrongPass && (
-        <div className="password">
-          <button onClick={passwordChangeHandler}> <ul>
-            <li>
-              <Link to="/PasswordPage">
-                <h1>Forgot Password !!!</h1>
-              </Link>
-            </li>
-          </ul></button>
-        </div>
-      )}
-      {!wrongPass && (
-        <div className="password1">
-          <ul>
-            <li>
-              <Link to="/PasswordPage">
-                <h1>Forgot Password</h1>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+      
       <Prompt
         when={dataEntering}
         message={(location) => "entered data will be lost"}
